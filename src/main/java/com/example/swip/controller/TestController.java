@@ -12,6 +12,7 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class TestController {
     private final TestService testService;
+
     @GetMapping("/test")
     public Map<String, Object> TestController() {
         return testService.getTestData();

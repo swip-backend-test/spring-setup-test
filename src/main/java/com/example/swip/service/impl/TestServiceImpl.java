@@ -13,6 +13,7 @@ public class TestServiceImpl implements TestService {
         Map<String, Object> testData = new HashMap<>();
         testData.put("label1", "test1");
         testData.put("label2", "test2");
+        testData.put("label3", "test3");
         return testData;
     }
 }
