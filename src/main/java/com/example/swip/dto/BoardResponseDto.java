@@ -3,12 +3,10 @@ package com.example.swip.dto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
-@Getter
 @AllArgsConstructor
-public class BoardUpdateDto {
-
+@Getter
+public class BoardResponseDto {
+    private Long id;
     private String title;
-    private String content;
-
+    private String writer;
 }
-
