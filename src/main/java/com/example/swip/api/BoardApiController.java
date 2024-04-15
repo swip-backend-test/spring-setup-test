@@ -7,7 +7,6 @@ import com.example.swip.dto.BoardUpdateDto;
 import com.example.swip.entity.Board;
 import com.example.swip.service.BoardService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -52,7 +51,8 @@ public class BoardApiController {
                 findBoard.getTitle(),
                 findBoard.getContent(),
                 findBoard.getWriter(),
-                findBoard.getCreated_time());
+                findBoard.getCreated_time(),
+                findBoard.getUpdated_time());
 
         return response;
     }

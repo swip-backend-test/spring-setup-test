@@ -13,4 +13,5 @@ public class BoardDetailResponseDto {
     private String content;
     private String writer;
     private LocalDateTime created_time;
+    private LocalDateTime updated_time;
 }
