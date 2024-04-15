@@ -21,7 +21,9 @@ public class Board {
     private String content;
 
     // 회원 정보 entity 생성 후 연결 필요
-    private String writer;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User writer;
 
     @CreationTimestamp
     private LocalDateTime created_time;
