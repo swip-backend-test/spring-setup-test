@@ -36,7 +36,7 @@ public class BoardApiController {
 
         //Dto 로 변환
         List<BoardResponse> result = allBoards.stream()
-                .map(board -> new BoardResponse(board.getId(), board.getTitle(), board.getWriter()))
+                .map(board -> new BoardResponse(board.getId(), board.getTitle(), board.getWriter().getId()))
                 .collect(Collectors.toList());
 
         return new Result(result); // TODO: Result 타입으로 한번 감싸기
@@ -51,7 +51,7 @@ public class BoardApiController {
                 findBoard.getId(),
                 findBoard.getTitle(),
                 findBoard.getContent(),
-                findBoard.getWriter(),
+                findBoard.getWriter().getId(),
                 findBoard.getCreated_time(),
                 findBoard.getUpdated_time());
 

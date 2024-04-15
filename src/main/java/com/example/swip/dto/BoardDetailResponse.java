@@ -12,7 +12,7 @@ public class BoardDetailResponse {
     private Long id;
     private String title;
     private String content;
-    private User writer;
+    private Long writerId;
     private LocalDateTime created_time;
     private LocalDateTime updated_time;
 }

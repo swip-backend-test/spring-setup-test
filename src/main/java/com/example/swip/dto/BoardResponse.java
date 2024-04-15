@@ -9,5 +9,5 @@ import lombok.Getter;
 public class BoardResponse {
     private Long id;
     private String title;
-    private User writer;
+    private Long writerId;
 }
