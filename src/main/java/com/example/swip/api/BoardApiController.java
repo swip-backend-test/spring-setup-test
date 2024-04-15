@@ -1,9 +1,9 @@
 package com.example.swip.api;
 
-import com.example.swip.dto.BoardDetailResponseDto;
-import com.example.swip.dto.BoardResponseDto;
-import com.example.swip.dto.BoardSaveDto;
-import com.example.swip.dto.BoardUpdateDto;
+import com.example.swip.dto.BoardDetailResponse;
+import com.example.swip.dto.BoardResponse;
+import com.example.swip.dto.BoardSaveRequest;
+import com.example.swip.dto.BoardUpdateRequest;
 import com.example.swip.entity.Board;
 import com.example.swip.service.BoardService;
 import lombok.AllArgsConstructor;
@@ -22,7 +22,7 @@ public class BoardApiController {
 
     //저장
     @PostMapping("/board")
-    public Long saveBoard(@RequestBody BoardSaveDto dto){
+    public Long saveBoard(@RequestBody BoardSaveRequest dto){
 
         Long savedBoard = boardService.saveBoard(dto);
         System.out.println("savedBoard = " + savedBoard);
@@ -35,19 +35,19 @@ public class BoardApiController {
         List<Board> allBoards = boardService.findAllBoards();
 
         //Dto 로 변환
-        List<BoardResponseDto> result = allBoards.stream()
-                .map(board -> new BoardResponseDto(board.getId(), board.getTitle(), board.getWriter()))
+        List<BoardResponse> result = allBoards.stream()
+                .map(board -> new BoardResponse(board.getId(), board.getTitle(), board.getWriter()))
                 .collect(Collectors.toList());
 
         return new Result(result); // TODO: Result 타입으로 한번 감싸기
     }
 
     @GetMapping("/board/{id}")
-    public BoardDetailResponseDto showBoardDetail(@PathVariable("id") Long boardId){
+    public BoardDetailResponse showBoardDetail(@PathVariable("id") Long boardId){
         Board findBoard = boardService.findBoard(boardId);
 
         // Dto 로 변환
-        BoardDetailResponseDto response = new BoardDetailResponseDto(
+        BoardDetailResponse response = new BoardDetailResponse(
                 findBoard.getId(),
                 findBoard.getTitle(),
                 findBoard.getContent(),
@@ -62,9 +62,9 @@ public class BoardApiController {
     @PutMapping("/board/{id}/edit")
     public Long updateBoardDetail(
             @PathVariable("id") Long boardId,
-            @RequestBody BoardUpdateDto boardUpdateDto
+            @RequestBody BoardUpdateRequest boardUpdateRequest
     ){
-        Long updatedBoardId = boardService.updateBoard(boardId, boardUpdateDto);
+        Long updatedBoardId = boardService.updateBoard(boardId, boardUpdateRequest);
         return updatedBoardId;
     }
 

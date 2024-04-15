@@ -1,14 +1,13 @@
 package com.example.swip.dto;
 
+import com.example.swip.entity.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
-@Getter
 @AllArgsConstructor
-public class BoardUpdateDto {
-
+@Getter
+public class BoardResponse {
+    private Long id;
     private String title;
-    private String content;
-
+    private User writer;
 }
-
